@@ -12,7 +12,6 @@ task main()
 		motor[frontLeft] = vexRT[Ch3];
 		motor[backLeft] = vexRT[Ch3];
 		motor[frontRight] = vexRT[Ch2];
-
 		motor[backRight] = vexRT[Ch2];
 
 	}
