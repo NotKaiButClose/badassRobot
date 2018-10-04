@@ -9,17 +9,30 @@
 task main()
 {
 
+	signed byte flySpeed = 0;
+
 	while (true)
 	{
+		// Basic tank drive.
 		motor[frontLeft] = vexRT[Ch3];
 		motor[backLeft] = vexRT[Ch3];
 		motor[frontRight] = vexRT[Ch2];
 		motor[backRight] = vexRT[Ch2];
 
+		// Changes fly wheel speed based on button input.
+		// Button 8R slows it down, button 8U speeds it up.
+		flySpeed += (Btn8U == true)? 2 : 0;
+		flySpeed -= (Btn8R == true)? 2 : 0;
+
 		if (Btn8D == true)
 		{
-			motor[flyLeft] = 127;
-			motor[flyRight] = 127;
+			motor[flyLeft] = flySpeed;
+			motor[flyRight] = flySpeed;
+		}
+		else
+		{
+			motor[flyLeft] = 0;
+			motor[flyRight] = 0;
 		}
 
 	}
